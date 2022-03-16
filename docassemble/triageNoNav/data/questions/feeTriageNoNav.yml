@@ -1,0 +1,59 @@
+features:
+  progress bar: True
+  hide navbar: True
+---
+mandatory: True
+question: |
+  Who is completeing the fee waiver request?
+field: pick_user
+choices:
+  - Me
+  - My Spouse/Partner
+---
+mandatory: True
+progress: 50
+question: |
+  Are you a California resident?
+field: is_res
+choices:
+  - Yes
+  - No
+---
+mandatory: True
+code: |
+  if is_res == 'Yes':
+    pick_one  
+  if pick_user == 'No':
+    pick_two
+---
+progress: 100
+question: 
+  We recommend the following package.
+subquestion:  
+  Fee Waiver Module
+buttons:
+  - Click here to start your interview: logout
+    url: https://jrolltesting.club/interview?i=docassemble.playground1userQuestionsTest%3AFee_Waiver_ModuleTest.yml#page1
+event: pick_one
+---
+progress: 100
+question: Sorry you must be a resident.
+buttons:
+  - Exit: exit
+  - Restart: restart
+mandatory: True
+---
+metadata:
+  title: 
+    feeQuest
+  tags:
+    - TriageQ
+  required privileges:
+  allow anonymous access: True 
+
+
+
+
+
+
+
